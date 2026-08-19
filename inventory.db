@@ -1,0 +1,52 @@
+import sqlite3
+
+conn = sqlite3.connect("inventory.db")
+
+conn.execute("""
+
+CREATE TABLE inventory(
+
+item TEXT,
+
+quantity INTEGER
+
+)
+
+""")
+
+ 
+
+conn.execute("""
+
+CREATE TABLE issues(
+
+id INTEGER PRIMARY KEY,
+
+employee TEXT,
+
+item TEXT,
+
+qty INTEGER,
+
+issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+)
+
+""")
+conn.execute("""
+
+INSERT INTO inventory VALUES
+
+('Pen',100),
+
+('Pencil',80),
+
+('Notebook',50),
+
+('Marker',20)
+
+""")
+
+conn.commit()
+
+conn.close()
